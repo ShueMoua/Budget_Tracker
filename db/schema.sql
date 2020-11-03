@@ -1,0 +1,26 @@
+DROP DATABASE IF EXISTS budget_tracker_db;
+
+CREATE DATABASE budget_tracker_db;
+
+USE budget_tracker_db;
+
+CREATE TABLE users (
+id AUTO_INCREMENT INTEGER PRIMARY KEY,
+email VARCHAR,
+password VARCHAR()
+);
+
+CREATE TABLE income (
+id AUTO_INCREMENT INTEGER PRIMARY KEY NOT NULL,
+amount INTEGER NOT NULL,
+description VARCHAR NOT NULL,
+day DATE
+);
+
+CREATE TABLE expense (
+id AUTO_INCREMENT INTEGER PRIMARY KEY NOT NULL,
+amount INTEGER NOT NULL,
+description VARCHAR NOT NULL,
+day DATE 
+);
+
