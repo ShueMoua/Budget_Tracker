@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "rootroot",
+=======
+    "password": "root",
+>>>>>>> f024a35567526cb04d9a2d01a865c4c578730cb1
     "database": "budget_tracker_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
