@@ -1,1 +1,166 @@
 <!-- Detailed view of expense and income -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Budget Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/logout">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Form for users to enter incomes and expenses -->
+    <div class="container">
+        <h1>Budget Details</h1>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <!-- Should find a way to ensure only dollars are admitted -->
+                        <label for="amount">Amount</label>
+                        <input type="number" class="form-control" id="amount" aria-describedby="amountHelp">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="validationDefault04">Date</label>
+                        <select class="custom-select" id="validationDefault04" required>
+                            <option selected disabled value="">Select</option>
+                            <!-- Should find an auto calendar... -->
+                            <option>10/11/2020</option>
+                            <option>10/12/2020</option>
+                            <option>10/13/2020</option>
+                            <option>10/14/2020</option>
+                            <option>10/15/2020</option>
+                            <option>10/16/2020</option>
+                            <option>10/17/2020</option>
+                            <option>10/18/2020</option>
+                            <option>10/19/2020</option>
+                            <option>10/20/2020</option>
+                            <option>10/21/2020</option>
+                            <option>10/22/2020</option>
+                            <option>10/23/2020</option>
+                            <option>10/24/2020</option>
+                            <option>10/25/2020</option>
+                            <option>10/26/2020</option>
+                            <option>10/27/2020</option>
+                            <option>10/28/2020</option>
+                            <option>10/29/2020</option>
+                            <option>10/30/2020</option>
+                            <option>10/31/2020</option>
+                            <option>11/01/2020</option>
+                            <option>11/02/2020</option>
+                            <option>11/03/2020</option>
+                            <option>11/04/2020</option>
+                            <option>11/05/2020</option>
+                            <option>11/06/2020</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <select class="form-control form-control-sm">
+                        <option>Income</option>
+                        <option>Expense</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Income Portion -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Income Statement</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Income ID</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>$5000.00</td>
+                            <td>10/31/2020</td>
+                            <td>This was Halloween money.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Expense Portion -->
+        <div class="row">
+            <div class="col">
+                <h2>Expense Statement</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Expense ID</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>$50.00</td>
+                            <td>10/30/2020</td>
+                            <td>Spent on Halloween candy.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
+
+</body>
+
+</html>
