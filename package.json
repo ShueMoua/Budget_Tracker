@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ShueMoua/project2#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chart.js": "^2.9.4",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
