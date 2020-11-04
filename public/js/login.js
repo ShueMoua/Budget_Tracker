@@ -34,6 +34,7 @@ $(document).ready(function() {
       })
       .catch(function(err) {
         console.log(err);
+        alert("Please enter in the correct email and password")
       });
   }
 });
