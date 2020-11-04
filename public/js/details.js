@@ -82,4 +82,28 @@ $(document).ready(function () {
         }
     })
 
+    $(document).on("click", ".delete-income", handleDeleteButtonPress);
+    // Function for handling what happens when the delete button is pressed
+    function handleDeleteButtonPress() {
+        var listItemData = $(this).parent("td").parent("tr").data("id");
+        var id = listItemData.id;
+        $.ajax({
+            method: "DELETE",
+            url: "/api/details/" + id
+        })
+            .then(getIncome);
+    }
+
+    $(document).on("click", ".delete-expense", handleDeleteButtonPress);
+    // Function for handling what happens when the delete button is pressed
+    function handleDeleteButtonPress() {
+        var listItemData = $(this).parent("td").parent("tr").data("id");
+        var id = listItemData.id;
+        $.ajax({
+            method: "DELETE",
+            url: "/api/details/" + id
+        })
+            .then(getExpense);
+    }
+
 });
