@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    const formatter = new Intl.NumberFormat('en-US', {
+    var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });
@@ -15,12 +15,11 @@ $(document).ready(function () {
             let newAmount = formatter.format(amount)
 
             $("#incomeTableBody").append(
-                `<tr class="newTableRow">
-                <td class="amountColumn">${newAmount}</td>
+                `<tr>
+                <th>${data[i].id}</th>
+                <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
-                <td><a href="/edit"><button>Edit</button></a></td>
-                <td><button class="deleteIncome" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
         }
@@ -37,12 +36,11 @@ $(document).ready(function () {
             let newAmount = formatter.format(amount)
 
             $("#expenseTableBody").append(
-                `<tr class="newTableRow">
-                <td class="amountColumn">${newAmount}</td>
+                `<tr>
+                <th>${data[i].id}</th>
+                <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
-                <td><a href="/"><button>Edit</button></a></td>
-                <td><button class="deleteExpense" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
         }
@@ -84,40 +82,28 @@ $(document).ready(function () {
         }
     })
 
-    $("#incomeTableBody").on("click", ".deleteIncome", function (event) {
-        console.log("clicked");
-        console.log($(this).val());
-        event.preventDefault();
-        if(confirm("Are you sure you want to delete that record?") === true) {
-            $.ajax({
-                method: "DELETE",
-                url: "/api/income/" + $(this).val()
-              })
-                .then(function() {
-                    alert("Successfully deleted income");
-                    window.location.href = "/details";
-                });
-        }
-        return;
-    })
+    $(document).on("click", ".delete-income", handleDeleteButtonPress);
+    // Function for handling what happens when the delete button is pressed
+    function handleDeleteButtonPress() {
+        var listItemData = $(this).parent("td").parent("tr").data("id");
+        var id = listItemData.id;
+        $.ajax({
+            method: "DELETE",
+            url: "/api/details/" + id
+        })
+            .then(getIncome);
+    }
 
-    $("#expenseTableBody").on("click", ".deleteExpense", function (event) {
-        console.log("clicked");
-        console.log($(this).val());
-        event.preventDefault();
-        if(confirm("Are you sure you want to delete that record?") === true) {
-            $.ajax({
-                method: "DELETE",
-                url: "/api/expense/" + $(this).val()
-              })
-                .then(function() {
-                    alert("Successfully deleted expense");
-                    window.location.href = "/details";
-                });
-        }
-        return;
-    })
-
-
+    $(document).on("click", ".delete-expense", handleDeleteButtonPress);
+    // Function for handling what happens when the delete button is pressed
+    function handleDeleteButtonPress() {
+        var listItemData = $(this).parent("td").parent("tr").data("id");
+        var id = listItemData.id;
+        $.ajax({
+            method: "DELETE",
+            url: "/api/details/" + id
+        })
+            .then(getExpense);
+    }
 
 });
