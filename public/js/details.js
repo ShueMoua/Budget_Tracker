@@ -16,10 +16,11 @@ $(document).ready(function () {
 
             $("#incomeTableBody").append(
                 `<tr>
-                <th>${data[i].id}</th>
                 <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
+                <td><a href="/"><button>Edit</button></a></td>
+                <td><button class="delete-income" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
         }
@@ -37,10 +38,11 @@ $(document).ready(function () {
 
             $("#expenseTableBody").append(
                 `<tr>
-                <th>${data[i].id}</th>
                 <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
+                <td><a href="/"><button>Edit</button></a></td>
+                <td><button class="delete-expense" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
         }
@@ -82,28 +84,33 @@ $(document).ready(function () {
         }
     })
 
-    $(document).on("click", ".delete-income", handleDeleteButtonPress);
-    // Function for handling what happens when the delete button is pressed
-    function handleDeleteButtonPress() {
-        var listItemData = $(this).parent("td").parent("tr").data("id");
-        var id = listItemData.id;
-        $.ajax({
-            method: "DELETE",
-            url: "/api/details/" + id
-        })
-            .then(getIncome);
-    }
+    $(document).on("click", ".delete-income", function (event) {
+        event.preventDefault();
+        if(confirm("Are you sure you want to delete that record?") === true) {
+            $.ajax({
+                method: "DELETE",
+                url: "/api/income/" + $(this).val()
+              })
+                .then(function() {
+                    alert("Successfully deleted the income");
+                    window.location.href = "/details";
+                });
+        }
+        return;
+    });
 
-    $(document).on("click", ".delete-expense", handleDeleteButtonPress);
-    // Function for handling what happens when the delete button is pressed
-    function handleDeleteButtonPress() {
-        var listItemData = $(this).parent("td").parent("tr").data("id");
-        var id = listItemData.id;
-        $.ajax({
-            method: "DELETE",
-            url: "/api/details/" + id
-        })
-            .then(getExpense);
-    }
-
-});
+    $(document).on("click", ".delete-expense", function (event) {
+        event.preventDefault();
+        if(confirm("Are you sure you want to delete that record?") === true) {
+            $.ajax({
+                method: "DELETE",
+                url: "/api/expense/" + $(this).val()
+              })
+                .then(function() {
+                    alert("Successfully deleted the expense");
+                    window.location.href = "/details";
+                });
+        }
+        return;
+    });
+}); 
