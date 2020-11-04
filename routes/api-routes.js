@@ -48,7 +48,14 @@ module.exports = function(app) {
   });
 
   app.get("/api/expense", function(req, res) {
-    db.Expense.findAll({})
+    db.Expense.findAll({
+      where: {
+        UserId: req.user.id
+      },
+      order: [
+        ['day','DESC']
+      ]
+    })
       .then(function(dbPost) {
         res.json(dbPost);
       });
@@ -56,7 +63,14 @@ module.exports = function(app) {
 
    // GET route for getting all of the incomes
    app.get("/api/income", function(req, res) {
-    db.Income.findAll({})
+    db.Income.findAll({
+      where: {
+        UserId: req.user.id
+      },
+      order: [
+        ['day','DESC']
+      ]
+    })
       .then(function(dbPost) {
         res.json(dbPost);
       });
@@ -66,9 +80,10 @@ module.exports = function(app) {
   app.post("/api/expense", function(req, res) {
     console.log(req.body);
     db.Expense.create({
-      amount: req.amount,
-      description: req.description,
-      day: req.day
+      amount: req.body.amount,
+      description: req.body.description,
+      day: req.body.day,
+      UserId: req.user.id
     })
       .then(function(dbPost) {
         res.json(dbPost);
@@ -78,9 +93,10 @@ module.exports = function(app) {
   app.post("/api/income", function(req, res) {
     console.log(req.body);
     db.Income.create({
-      amount: req.amount,
-      description: req.description,
-      day: req.day
+      amount: req.body.amount,
+      description: req.body.description,
+      day: req.body.day,
+      UserId: req.user.id
     })
       .then(function(dbPost) {
         res.json(dbPost);
