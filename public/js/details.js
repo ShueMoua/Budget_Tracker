@@ -82,6 +82,53 @@ $(document).ready(function () {
         }
     })
 
+    // Need to figure out how to delete
+    // function incomeAddButton() {
+    //     // First check if a <tbody> tag exists, add one if not
+    //     if ($("#income tbody").length == 0) {
+    //         $("#income").append("<tbody></tbody>");
+    //     }
+    
+    //     // Append income row to the table
+    //     $("#income tbody").append(
+    //         "<tr>" +
+    //         "<td>" + $("#incomename").val() + "</td>" +
+    //         "<td>" + $("#introdate").val() + "</td>" +
+    //         "<td>" + $("#url").val() + "</td>" +
+    //         "<td>" +
+    //         "<button type='button' onclick='incomeDelete(this);' class='btn btn-default'>" +
+    //         "<span class='glyphicon glyphicon-remove' />" +
+    //         "</button>" +
+    //         "</td>" +
+    //         "</tr>");
+    // }
+    // function incomeDelete(ctl) {
+    //     $(ctl).parents("tr").remove();
+    // }
+
+    // function expenseAddButton() {
+    //     // First check if a <tbody> tag exists, add one if not
+    //     if ($("#expense tbody").length == 0) {
+    //         $("#expense").append("<tbody></tbody>");
+    //     }
+    
+    //     // Append product to the table
+    //     $("#expense tbody").append(
+    //         "<tr>" +
+    //         "<td>" + $("#expensename").val() + "</td>" +
+    //         "<td>" + $("#introdate").val() + "</td>" +
+    //         "<td>" + $("#url").val() + "</td>" +
+    //         "<td>" +
+    //         "<button type='button' onclick='expenseDelete(this);' class='btn btn-default'>" +
+    //         "<span class='glyphicon glyphicon-remove' />" +
+    //         "</button>" +
+    //         "</td>" +
+    //         "</tr>");
+    // }
+    // function expenseDelete(ctl) {
+    //     $(ctl).parents("tr").remove();
+    // }
+
     $(document).on("click", ".delete-income", handleDeleteButtonPress);
     // Function for handling what happens when the delete button is pressed
     function handleDeleteButtonPress() {
