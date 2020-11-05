@@ -22,7 +22,7 @@ $(document).ready(function () {
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
                 <td><button type="button" onClick={this.showModal} class="btn btn-primary editIncome" data-toggle="modal" data-target="#incomeModal${data[i].id}">Edit</button></td>
-                <td><button class="delete-income btn btn-primary" value="${data[i].id}">Delete</button></td>
+                <td><button class="delete-income btn btn-danger" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
 
@@ -91,7 +91,7 @@ $(document).ready(function () {
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
                 <td><button type="button" class="btn btn-primary editExpense" data-toggle="modal" data-target="#expenseModal${data[i].id}">Edit</button></td>
-                <td><button class="delete-expense btn btn-primary" value="${data[i].id}">Delete</button></td>
+                <td><button class="delete-expense btn btn-danger" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
 
