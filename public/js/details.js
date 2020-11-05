@@ -19,10 +19,57 @@ $(document).ready(function () {
                 <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
-                <td><a href="/"><button>Edit</button></a></td>
-                <td><button class="delete-income" value="${data[i].id}">Delete</button></td>
+                <td><button type="button" class="btn btn-primary editIncome" data-toggle="modal" data-target="#incomeModal${data[i].id}">Edit</button></td>
+                <td><button class="delete-income btn btn-primary" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
+            
+            $("#modalDataGoesHere").append(
+                `<div class="modal fade" id="incomeModal${data[i].id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Income</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="incomeOrExpense">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="amount">Amount</label>
+                                                <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" step=".01" value="${data[i].amount}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="validationDefault04">Date</label>
+                                                <input type="date" id="day" name="day"  value="${data[i].day}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Description</label>
+                                                <input class="form-control" id="exampleFormControlTextarea1" rows="3" value="${data[i].description}"></input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary saveEditIncome">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            )
         }
     })
 
@@ -41,10 +88,57 @@ $(document).ready(function () {
                 <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
-                <td><a href="/"><button>Edit</button></a></td>
-                <td><button class="delete-expense" value="${data[i].id}">Delete</button></td>
+                <td><button type="button" class="btn btn-primary editIncome" data-toggle="modal" data-target="#expenseModal${data[i].id}">Edit</button></td>
+                <td><button class="delete-income btn btn-primary" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
+            
+            $("#modalDataGoesHere").append(
+                `<div class="modal fade" id="expenseModal${data[i].id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Expense</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="incomeOrExpense">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="amount">Amount</label>
+                                                <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" step=".01" value="${data[i].amount}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="validationDefault04">Date</label>
+                                                <input type="date" id="day" name="day"  value="${data[i].day}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Description</label>
+                                                <input class="form-control" id="exampleFormControlTextarea1" rows="3" value="${data[i].description}"></input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary saveEditExpense">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            )
         }
     })
 
@@ -86,12 +180,12 @@ $(document).ready(function () {
 
     $(document).on("click", ".delete-income", function (event) {
         event.preventDefault();
-        if(confirm("Are you sure you want to delete that record?") === true) {
+        if (confirm("Are you sure you want to delete that record?") === true) {
             $.ajax({
                 method: "DELETE",
                 url: "/api/income/" + $(this).val()
-              })
-                .then(function() {
+            })
+                .then(function () {
                     alert("Successfully deleted the income");
                     window.location.href = "/details";
                 });
@@ -101,12 +195,12 @@ $(document).ready(function () {
 
     $(document).on("click", ".delete-expense", function (event) {
         event.preventDefault();
-        if(confirm("Are you sure you want to delete that record?") === true) {
+        if (confirm("Are you sure you want to delete that record?") === true) {
             $.ajax({
                 method: "DELETE",
                 url: "/api/expense/" + $(this).val()
-              })
-                .then(function() {
+            })
+                .then(function () {
                     alert("Successfully deleted the expense");
                     window.location.href = "/details";
                 });
