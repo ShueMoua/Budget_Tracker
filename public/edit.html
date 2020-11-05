@@ -1,0 +1,76 @@
+<!-- Detailed view of expense and income -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Budget Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/logout">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/members"><button>Home</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/details"><button>Details</button></a>
+        </div>
+    </div>
+
+    <!-- Form for users to enter incomes and expenses -->
+    <div class="container" id="inputDetails">
+        <h1>Update Details</h1>
+        <form id="incomeOrExpense">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <!-- Should find a way to ensure only dollars are admitted -->
+                        <label for="amount">Amount</label>
+                        <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" step=".01">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="validationDefault04">Date</label>
+                        <input type="date" id="day" name="day">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/details.js"></script>
+</body>
+
+</html>

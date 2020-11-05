@@ -2,10 +2,10 @@ DROP DATABASE IF EXISTS budget_tracker_db;
 
 CREATE DATABASE budget_tracker_db;
 
-use budget_tracker_db;
+USE budget_tracker_db;
 
 CREATE TABLE users (
-id  INTEGER AUTO_INCREMENT PRIMARY KEY,
+id INTEGER AUTO_INCREMENT PRIMARY KEY,
 email VARCHAR(100),
 password VARCHAR(100)
 );
@@ -31,7 +31,6 @@ day DATE,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 insert into expense (amount, description, day)
 values (100, 'groceries', '2020-11-03');
-
-
