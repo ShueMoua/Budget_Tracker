@@ -15,20 +15,23 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/logout">
-                    Logout
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="row">
-        <div class="col-md-6">
-            <a href="/members"><button>Home</button></a>
-        </div>
+    <!-- Navbar -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/members">Budget Tracker</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/members">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/details">Details <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+        </nav>
     </div>
 
     <!-- Form for users to enter incomes and expenses -->
