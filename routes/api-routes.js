@@ -38,15 +38,23 @@ module.exports = function (app) {
       // The user is not logged in, send back an empty object
       res.json({});
     } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id,
-        amount: req.user.amount
+      db.User.findAll({
+        where: { id: req.user.id },
+        include: [
+          {
+            model: db.Income
+          },
+          {
+            model: db.Expense
+          },
+        ]
+      }).then(function (data) {
+        res.json(data);
       });
     }
   });
+
+
 
   app.get("/api/expense", function (req, res) {
     db.Expense.findAll({
@@ -127,13 +135,9 @@ module.exports = function (app) {
   });
 
   // PUT route for updating posts
-  app.put("/api/income", function (req, res) {
-    db.Income.update(req.body,
-      {
-        amount: req.body.amount,
-        description: req.body.description,
-        day: req.body.day
-      },
+  app.put("/api/income/", function (req, res) {
+    db.Income.update(
+      req.body,
       {
         where: {
           id: req.body.id
@@ -145,12 +149,8 @@ module.exports = function (app) {
   });
 
   app.put("/api/expense", function (req, res) {
-    db.Expense.update(req.body,
-      {
-        amount: req.body.amount,
-        description: req.body.description,
-        day: req.body.day
-      },
+    db.Expense.update(
+      req.body,
       {
         where: {
           id: req.body.id
