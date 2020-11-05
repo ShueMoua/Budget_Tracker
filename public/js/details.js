@@ -8,22 +8,24 @@ $(document).ready(function () {
     $.get("api/income", function (data) {
         for (let i = 0; i < data.length; i++) {
 
+
             let date = new Date(data[i].day.replace(/-/g, '\/'));
             let newDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
 
             let amount = data[i].amount;
             let newAmount = formatter.format(amount)
 
+
             $("#incomeTableBody").append(
-                `<tr>
-                <td>${newAmount}</td>
+                `<tr class="incomeRow">
+                <td class="incomeAmount" value="${newAmount}">${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
-                <td><button type="button" class="btn btn-primary editIncome" data-toggle="modal" data-target="#incomeModal${data[i].id}">Edit</button></td>
+                <td><button type="button" onClick={this.showModal} class="btn btn-primary editIncome" data-toggle="modal" data-target="#incomeModal${data[i].id}">Edit</button></td>
                 <td><button class="delete-income btn btn-primary" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
-            
+
             $("#modalDataGoesHere").append(
                 `<div class="modal fade" id="incomeModal${data[i].id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -35,12 +37,12 @@ $(document).ready(function () {
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="incomeOrExpense">
+                                <form class="editForm" name="editForm${data[i].id}">
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="amount">Amount</label>
-                                                <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" step=".01" value="${data[i].amount}">
+                                                <input type="number" class="form-control" id="income-amount-${data[i].id}" aria-describedby="amountHelp" step=".01" name="amount" value="${data[i].amount}">
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +50,7 @@ $(document).ready(function () {
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="validationDefault04">Date</label>
-                                                <input type="date" id="day" name="day"  value="${data[i].day}">
+                                                <input type="date" id="income-day-${data[i].id}" name="day"  value="${data[i].day}">
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +58,7 @@ $(document).ready(function () {
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Description</label>
-                                                <input class="form-control" id="exampleFormControlTextarea1" rows="3" value="${data[i].description}"></input>
+                                                <input name="description" class="form-control" id="income-description-${data[i].id}" rows="3" value="${data[i].description}"></input>
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +66,7 @@ $(document).ready(function () {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary saveEditIncome">Save changes</button>
+                                <button type="submit" class="btn btn-primary saveEditIncome" data-value="${data[i].id}">Save changes</input>
                             </div>
                         </div>
                     </div>
@@ -88,11 +90,11 @@ $(document).ready(function () {
                 <td>${newAmount}</td>
                 <td>${newDate}</td>
                 <td>${data[i].description}</td>
-                <td><button type="button" class="btn btn-primary editIncome" data-toggle="modal" data-target="#expenseModal${data[i].id}">Edit</button></td>
-                <td><button class="delete-income btn btn-primary" value="${data[i].id}">Delete</button></td>
+                <td><button type="button" class="btn btn-primary editExpense" data-toggle="modal" data-target="#expenseModal${data[i].id}">Edit</button></td>
+                <td><button class="delete-expense btn btn-primary" value="${data[i].id}">Delete</button></td>
                 </tr>`
             );
-            
+
             $("#modalDataGoesHere").append(
                 `<div class="modal fade" id="expenseModal${data[i].id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -104,12 +106,12 @@ $(document).ready(function () {
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="incomeOrExpense">
+                                <form class="editForm" name="editForm${data[i].id}">
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="amount">Amount</label>
-                                                <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" step=".01" value="${data[i].amount}">
+                                                <input type="number" class="form-control" id="expense-amount-${data[i].id}" aria-describedby="amountHelp" step=".01" name="amount" value="${data[i].amount}">
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +119,7 @@ $(document).ready(function () {
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="validationDefault04">Date</label>
-                                                <input type="date" id="day" name="day"  value="${data[i].day}">
+                                                <input type="date" id="expense-day-${data[i].id}" name="day"  value="${data[i].day}">
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +127,7 @@ $(document).ready(function () {
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Description</label>
-                                                <input class="form-control" id="exampleFormControlTextarea1" rows="3" value="${data[i].description}"></input>
+                                                <input name="description" class="form-control" id="expense-description-${data[i].id}" rows="3" value="${data[i].description}"></input>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +135,7 @@ $(document).ready(function () {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary saveEditExpense">Save changes</button>
+                                <button type="submit" class="btn btn-primary saveEditExpense" data-value="${data[i].id}">Save changes</input>
                             </div>
                         </div>
                     </div>
@@ -141,6 +143,54 @@ $(document).ready(function () {
             )
         }
     })
+
+
+    $(document).on("click", ".saveEditIncome", function (event) {
+        event.preventDefault();
+
+        idNum = $(this).data().value;
+
+        const newObj =
+        {
+            id: idNum,
+            amount: $("#income-amount-" + idNum).val(),
+            day: $("#income-day-" + idNum).val(),
+            description: $("#income-description-" + idNum).val()
+        }
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/income/",
+            data: newObj
+        }).then(function () {
+            alert("Successfully updated");
+            window.location.href = "/details";
+        });
+    });
+
+    $(document).on("click", ".saveEditExpense", function (event) {
+        event.preventDefault();
+
+        idNum = $(this).data().value;
+
+        const newObj =
+        {
+            id: idNum,
+            amount: $("#expense-amount-" + idNum).val(),
+            day: $("#expense-day-" + idNum).val(),
+            description: $("#expense-description-" + idNum).val()
+        }
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/expense/",
+            data: newObj
+        }).then(function () {
+            alert("Successfully updated");
+            window.location.href = "/details";
+        });
+    });
+
 
     $("#incomeOrExpense").on("submit", function (event) {
         event.preventDefault();
@@ -178,6 +228,7 @@ $(document).ready(function () {
         }
     })
 
+
     $(document).on("click", ".delete-income", function (event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete that record?") === true) {
@@ -207,4 +258,5 @@ $(document).ready(function () {
         }
         return;
     });
+
 }); 
