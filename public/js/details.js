@@ -7,7 +7,7 @@ $(document).ready(function () {
     $.get("api/budget", function (data) {
         $("#budgetSection").append(
             `   <div class="row">
-                    <div class="col-lg-8 budgetAmount"><h2>Budget Amount: $ ${data[0].amount}</h2></div>
+                    <div class="col-lg-8 budgetAmount"><div class="actualBudgetAmount">Budget Amount: ${formatter.format(data[0].amount)}</div></div>
                     <div class="col-lg-4">
                         <button type="button" class="btn btn-primary editBudget" data-toggle="modal" data-target="#budgetModal">Edit</button>
                     </div>
