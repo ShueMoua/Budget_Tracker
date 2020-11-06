@@ -17,7 +17,7 @@
 <body>
     <!-- Navbar -->
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="/members">Budget Tracker</a>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
@@ -35,8 +35,8 @@
     </div>
     <br>
     <!-- Form for users to enter incomes and expenses -->
-    <div class="container" id="inputDetails">
-        <h1>Add Income/Expense</h1>
+    <div class="container" id="inputDetails" style="background-color: white;">
+        <h1 class="text-center my-4">Budget Details</h1>
         <form id="incomeOrExpense">
             <div class="row">
                 <div class="col">
@@ -73,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                    <button type="submit" class="btn btn-success my-4" id="submitBtn">Submit</button>
                 </div>
             </div>
         </form>
@@ -82,22 +82,10 @@
     <br>
 
     <!-- Income Portion -->
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Budget Amount</h3>
-            </div>
-            <div class="col-lg-6">
-                <h3>$X</h3>
-            </div>
-        </div>
-
-        <br>
-        
+    <div class="container mt-5" style="background-color: white;">
         <div class="row">
             <div class="col">
-                <h3>Income Statement</h3>
+                <h2 class="mt-4 mb-3">Income Statement</h2>
             </div>
         </div>
         <div class="row">
@@ -121,7 +109,7 @@
         <!-- Expense Portion -->
         <div class="row">
             <div class="col">
-                <h3>Expense Statement</h3>
+                <h2 class="mt-5 mb-3">Expense Statement</h2>
             </div>
         </div>
         <div class="row">
