@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Budget = sequelize.define("Budget",
+  const Budget = sequelize.define("Budget",
     {
       amount:
       {
@@ -14,8 +14,7 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   Budget.associate = function (models) {
-    // We're saying that a Post should belong to an Author
-    // A Post can't be created without an Author due to the foreign key constraint
+
     Budget.belongsTo(models.User, {
       foreignKey: {
         allowNull: false

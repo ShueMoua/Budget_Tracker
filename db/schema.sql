@@ -3,34 +3,3 @@ DROP DATABASE IF EXISTS budget_tracker_db;
 CREATE DATABASE budget_tracker_db;
 
 USE budget_tracker_db;
-
-CREATE TABLE users (
-id INTEGER AUTO_INCREMENT PRIMARY KEY,
-email VARCHAR(100),
-password VARCHAR(100)
-);
-
-CREATE TABLE income (
-id INTEGER AUTO_INCREMENT  PRIMARY KEY NOT NULL,
-amount INTEGER NOT NULL,
-description VARCHAR(100) NOT NULL,
-day DATE,
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-insert into income (amount, description, day)
-values (100, 'bonus', '2020-11-03');
-
-
-CREATE TABLE expense (
-id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
-amount INTEGER NOT NULL,
-description VARCHAR(100) NOT NULL,
-day DATE,
-createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-insert into expense (amount, description, day)
-values (100, 'groceries', '2020-11-03');
