@@ -42,11 +42,14 @@ module.exports = function (app) {
         where: { id: req.user.id },
         include: [
           {
+            model: db.Budget
+          },
+          {
             model: db.Income
           },
           {
             model: db.Expense
-          },
+          }
         ]
       }).then(function (data) {
         res.json(data);

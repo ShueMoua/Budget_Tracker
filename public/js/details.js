@@ -1,8 +1,67 @@
 $(document).ready(function () {
-
     var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
+    });
+
+    $.get("api/budget", function (data) {
+        $("#budgetSection").append(
+            `   <div class="row">
+                    <div class="col-lg-8 budgetAmount"><h2>Budget Amount: $ ${data[0].amount}</h2></div>
+                    <div class="col-lg-4">
+                        <button type="button" class="btn btn-primary editBudget" data-toggle="modal" data-target="#budgetModal">Edit</button>
+                    </div>
+                </div>`
+        )
+        $("#modalDataGoesHere").append(
+            `<div class="modal fade" id="budgetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Budget</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="editBudget">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="amount">Amount</label>
+                                                <input type="number" class="form-control" id="budget-amount" aria-describedby="amountHelp" step=".01" name="amount" value="${data[0].amount}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary saveEditBudget" data-value="${data[0].id}">Save changes</input>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+        )
+    });
+
+    $(document).on("click", ".saveEditBudget", function (event) {
+        event.preventDefault();
+
+        idNum = $(this).data().value;
+        console.log(idNum);
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/budget/",
+            data: {
+                id: $(this).data().value,
+                amount: $("#budget-amount").val()
+            }
+        }).then(function () {
+            alert("Successfully updated");
+            window.location.href = "/details";
+        });
     });
 
     $.get("api/income", function (data) {
@@ -148,9 +207,9 @@ $(document).ready(function () {
     $(document).on("click", ".saveEditIncome", function (event) {
         event.preventDefault();
 
-        idNum = $(this).data().value;
+        let idNum = $(this).data().value;
 
-        const newObj =
+        let newObj =
         {
             id: idNum,
             amount: $("#income-amount-" + idNum).val(),
@@ -171,9 +230,9 @@ $(document).ready(function () {
     $(document).on("click", ".saveEditExpense", function (event) {
         event.preventDefault();
 
-        idNum = $(this).data().value;
+        let idNum = $(this).data().value;
 
-        const newObj =
+        let newObj =
         {
             id: idNum,
             amount: $("#expense-amount-" + idNum).val(),

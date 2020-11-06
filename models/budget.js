@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
     {
       amount:
       {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DECIMAL(10,2),
         allowNull: false
       },
     },
