@@ -26,7 +26,6 @@ Repository: https://github.com/ShueMoua/Budget_Tracker
 To utilize this website/application, end users may access it via the [Budget Tracker link](https://budget-hero.herokuapp.com). The user can sign up for a new account, using a unique email address and password. If they already have an account, they can login and be brought to the Home Page. This UI shows a chart of income and expense occurrences, a high level view of income, expense, and budget output. Users can easily insert new incomes and expenses, as well as edit or delete, on a Details page.
 <br>
 
-Screenshots
 ![GIF](public/images/budgetGIF.gif)
 <br>
 
@@ -37,6 +36,7 @@ Screenshots
 <br>
 
 ![Detail Page](public/images/detail1.png)
+<br>
 
 ## Installation Instructions
 N/A
