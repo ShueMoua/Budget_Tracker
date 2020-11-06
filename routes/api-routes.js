@@ -38,18 +38,22 @@ module.exports = function (app) {
       // The user is not logged in, send back an empty object
       res.json({});
     } else {
-      db.User.findAll({
+      db.User.findOne({
         where: { id: req.user.id },
         include: [
           {
             model: db.Budget
           },
           {
-            model: db.Income
+            model: db.Income,
           },
           {
             model: db.Expense
           }
+        ],
+        order: [
+          [db.Income, 'day', 'ASC'],
+          [db.Expense, 'day', 'ASC']
         ]
       }).then(function (data) {
         res.json(data);
