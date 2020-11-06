@@ -33,7 +33,7 @@ Screenshots
 ![Login](public/images/login.png)
 <br>
 
-![Home Page](public/images/home_bucket1.png)
+![Home Page](public/images/home_budget1.png)
 <br>
 
 ![Detail Page](public/images/detail1.png)
