@@ -55,3 +55,9 @@ body {
 #budgetSection {
     padding: 10px;
 }
+
+.inputButton, .memberName {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
