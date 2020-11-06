@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="memberName">
-                <h2><span class="member-name"></span></h2>
+                <h1><span class="member-name"></span></h1>
             </div>
         </div>
         <div class="row inputButton">
@@ -35,6 +35,34 @@
     <div class="container" style="background-color: white;">
         <canvas id="myChart" width="200" height="100"></canvas>
     </div>
+
+    <br>
+    <br>
+
+    <div class="container budgetContainer">
+        <div class="budgetExpenses">
+            <table class="table table-striped" id="budgetExpenseTable">
+                <thead>
+                    <tr>
+                        <td>Budget</td>
+                        <td id="budgetAmountGoesHere"></td>   
+                    </tr>
+                    <tr>
+                        <td>VS</td>
+                    </tr>
+                    <tr>
+                        <td>Expenses</td>
+                        <td id="expenseAmountGoesHere"></td>
+                    </tr>
+                    <tr>
+                        <td>Budget Leftover</td>
+                        <td id="leftoverAmountGoesHere"></td>
+                    </tr>
+                </thead>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
