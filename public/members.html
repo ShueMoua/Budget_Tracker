@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Budget Tracker</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="stylesheets/style.css" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/logout">
-                    Logout
+                <a class="navbar-brand logoutButton" href="/logout">
+                    <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -23,13 +26,6 @@
                 <h1><span class="member-name"></span></h1>
             </div>
         </div>
-        <div class="row inputButton">
-            <div>
-                <a href="/details">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Input Income/Expenses Here</button>
-                </a>
-            </div>
-        </div>
     </div>
     <br>
     <div class="container" style="background-color: white;">
@@ -37,28 +33,70 @@
     </div>
 
     <br>
+    <div class="container">
+        <div class="row inputButton">
+            <div>
+                <a href="/details">
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Budget / Incomes / Expenses Details</button>
+                </a>
+            </div>
+        </div>
+    </div>
     <br>
 
     <div class="container budgetContainer">
-        <div class="budgetExpenses">
-            <table class="table table-striped" id="budgetExpenseTable">
-                <thead>
-                    <tr>
-                        <td>Budget</td>
-                        <td id="budgetAmountGoesHere"></td>   
-                    </tr>
-                    <tr>
-                        <td>VS</td>
-                    </tr>
-                    <tr>
-                        <td>Expenses</td>
-                        <td id="expenseAmountGoesHere"></td>
-                    </tr>
-                    <tr>
-                        <td>Budget Leftover</td>
-                        <td id="leftoverAmountGoesHere"></td>
-                    </tr>
-                </thead>
+        <div class="col-lg-6 wordColumn">
+            <div class="row">
+                <h1 class="wordsAtBottom">Budget: &nbsp;&nbsp;</h1>
+            </div>
+            <div class="row">
+                <h1 class="wordsAtBottom">Expenses: &nbsp;&nbsp;</h1>
+            </div>
+            <hr class="budget-line">
+            <div class="row">
+                <h1 class="wordsAtBottom">Budget Leftover: &nbsp;&nbsp;</h1>
+            </div>
+        </div>
+
+        <div class="col-lg-6 numberColumn">
+            <div class="row">
+                <h1 id="budgetAmountGoesHere" class="wordsAtBottom"></h1>
+            </div>
+            <div class="row">
+                <h1 class="wordsAtBottom expenseAmountGoesHere"></h1>
+            </div>
+            <hr class="budget-line">
+            <div class="row">
+                <h1 id="leftoverAmountGoesHere" class="wordsAtBottom"></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container budgetContainer">
+        <div class="col-lg-6 wordColumn">
+            <div class="row">
+                <h1 class="wordsAtBottom">Income: &nbsp;&nbsp;</h1>
+            </div>
+            <div class="row">
+                <h1 class="wordsAtBottom">Expenses: &nbsp;&nbsp;</h1>
+            </div>
+            <hr class="budget-line">
+            <div class="row">
+                <h1 class="wordsAtBottom">Income Leftover: &nbsp;&nbsp;</h1>
+            </div>
+        </div>
+
+        <div class="col-lg-6 numberColumn">
+            <div class="row">
+                <h1 id="incomeAmountGoesHere" class="wordsAtBottom"></h1>
+            </div>
+            <div class="row">
+                <h1 class="wordsAtBottom expenseAmountGoesHere"></h1>
+            </div>
+            <hr class="budget-line">
+            <div class="row">
+                <h1 id="incomeLeftoverAmountGoesHere" class="wordsAtBottom"></h1>
+            </div>
         </div>
     </div>
 
@@ -68,4 +106,5 @@
     </script>
     <script type="text/javascript" src="js/members.js"></script>
 </body>
+
 </html>

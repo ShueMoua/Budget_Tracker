@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $.get("/api/user_data").then(function (data) {
-        $(".member-name").text("Welcome " + data.email);
+        $(".member-name").text("Welcome " + data.email + "!");
 
         
         let sumIncomeJan = 0;
@@ -172,9 +172,28 @@ $(document).ready(function () {
         sumExpenseNov + 
         sumExpenseDec;
 
-        $("#expenseAmountGoesHere").append(formatter.format(sumYearExpenses))
+        $(".expenseAmountGoesHere").append(formatter.format(sumYearExpenses))
 
         $("#leftoverAmountGoesHere").append(formatter.format((data.Budgets[0].amount - sumYearExpenses)))
+
+        let sumYearIncomes = 
+        sumIncomeJan + 
+        sumIncomeFeb + 
+        sumIncomeMar + 
+        sumIncomeApr + 
+        sumIncomeMay + 
+        sumIncomeJun + 
+        sumIncomeJul + 
+        sumIncomeAug + 
+        sumIncomeSept + 
+        sumIncomeOct + 
+        sumIncomeNov + 
+        sumIncomeDec;
+
+        $("#incomeAmountGoesHere").append(formatter.format(sumYearIncomes))
+
+        $("#incomeLeftoverAmountGoesHere").append(formatter.format((sumYearIncomes - sumYearExpenses)))
+
 
     });
 });

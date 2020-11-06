@@ -63,11 +63,42 @@ body {
 }
 
 .budgetContainer {
-    background-color: white;
+    background-color: transparent;
     margin: auto;
     display: block;
+    width: 600px;
+    padding: 15px;
 }
 
 .budgetExpenses {
+    text-align: center;
+}
+
+.wordColumn {
+    text-align: center;
+}
+
+.numberColumn {
+    text-align: center;
+}
+
+.member-name {
+    font-weight: bolder;
+}
+
+.wordsAtBottom{
+    font-weight: bolder;
+}
+
+.budget-line {
+    border: none;
+    height: 10px;
+    background-color: black;
+}
+
+.actualBudgetAmount {
+    height: 100%;
+    font-weight: bolder;
+    font-size: x-large;
     text-align: center;
 }
