@@ -43,3 +43,15 @@ body {
 .container {
     background-image: white;
 }
+
+.budgetAmount{
+    text-align: center;
+}
+
+.editBudget {
+    vertical-align: middle;
+}
+
+#budgetSection {
+    padding: 10px;
+}

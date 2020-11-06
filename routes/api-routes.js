@@ -42,16 +42,54 @@ module.exports = function (app) {
         where: { id: req.user.id },
         include: [
           {
+            model: db.Budget
+          },
+          {
             model: db.Income
           },
           {
             model: db.Expense
-          },
+          }
         ]
       }).then(function (data) {
         res.json(data);
       });
     }
+  });
+
+  app.post("/api/budget", function (req, res) {
+    console.log(req.body);
+    db.Budget.create({
+      amount: req.body.amount,
+      UserId: req.user.id
+    })
+      .then(function (data) {
+        res.json(data);
+      });
+  });
+
+  app.put("/api/budget/", function (req, res) {
+    db.Budget.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (data) {
+        res.json(data);
+      });
+  });
+
+  app.get("/api/budget", function (req, res) {
+    db.Budget.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    })
+      .then(function (data) {
+        res.json(data);
+      });
   });
 
 
@@ -65,8 +103,8 @@ module.exports = function (app) {
         ['day', 'DESC']
       ]
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
@@ -80,12 +118,11 @@ module.exports = function (app) {
         ['day', 'DESC']
       ]
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
-  // POST route for saving a new expense
   app.post("/api/expense", function (req, res) {
     console.log(req.body);
     db.Expense.create({
@@ -94,8 +131,8 @@ module.exports = function (app) {
       day: req.body.day,
       UserId: req.user.id
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
@@ -107,8 +144,8 @@ module.exports = function (app) {
       day: req.body.day,
       UserId: req.user.id
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
@@ -118,8 +155,8 @@ module.exports = function (app) {
         id: req.params.id
       }
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
@@ -129,8 +166,8 @@ module.exports = function (app) {
         id: req.params.id
       }
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
@@ -143,8 +180,8 @@ module.exports = function (app) {
           id: req.body.id
         }
       })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 
@@ -156,8 +193,8 @@ module.exports = function (app) {
           id: req.body.id
         }
       })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (data) {
+        res.json(data);
       });
   });
 };
