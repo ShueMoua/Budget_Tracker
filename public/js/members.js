@@ -3,6 +3,7 @@ $(document).ready(function () {
     $.get("/api/user_data").then(function (data) {
         $(".member-name").text("Welcome " + data.email);
 
+        
         let sumIncomeJan = 0;
         let sumIncomeFeb = 0;
         let sumIncomeMar = 0;
@@ -149,5 +150,31 @@ $(document).ready(function () {
                 }
             },
         });
+
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+
+        $("#budgetAmountGoesHere").append(formatter.format(data.Budgets[0].amount))
+
+        let sumYearExpenses = 
+        sumExpenseJan + 
+        sumExpenseFeb + 
+        sumExpenseMar + 
+        sumExpenseApr + 
+        sumExpenseMay + 
+        sumExpenseJun + 
+        sumExpenseJul + 
+        sumExpenseAug + 
+        sumExpenseSept + 
+        sumExpenseOct + 
+        sumExpenseNov + 
+        sumExpenseDec;
+
+        $("#expenseAmountGoesHere").append(formatter.format(sumYearExpenses))
+
+        $("#leftoverAmountGoesHere").append(formatter.format((data.Budgets[0].amount - sumYearExpenses)))
+
     });
 });

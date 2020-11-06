@@ -61,3 +61,13 @@ body {
     display: block;
     text-align: center;
 }
+
+.budgetContainer {
+    background-color: white;
+    margin: auto;
+    display: block;
+}
+
+.budgetExpenses {
+    text-align: center;
+}
